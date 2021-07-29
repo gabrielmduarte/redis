@@ -4,6 +4,8 @@ import com.gabrielduarte.redis.entity.Person
 import com.gabrielduarte.redis.service.PersonService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -18,5 +20,8 @@ class PersonController (
 
     @GetMapping("/{id}")
     fun findOne(@PathVariable id: Long): Person? = personService.findOne(id)
+
+    @PostMapping
+    fun create(@RequestBody person: Person) = personService.create(person)
 
 }
